@@ -1,0 +1,27 @@
+/* DESCRIPTION
+Each time Sunny and Johnny take a trip to the Ice Cream Parlor, they pool their money to buy ice cream. 
+On any given day, the parlor offers a line of flavors. Each flavor has a cost associated with it.
+
+Given the value of money and the cost of each flavor for t trips to the Ice Cream Parlor, help Sunny and Johnny 
+choose two distinct flavors such that they spend their entire pool of money during each visit. ID 
+numbers are the 1- based index number associated with a cost.
+DESCRIPTION */
+
+
+static void whatFlavors(int[] cost, int money) {
+
+// We will go through the cost array, for each value we will check if that value is a key in the map,
+// If it is not, then we store the difference between the value and money as the key, and the index it
+// is at as the value. If it is, that means that its difference between itself and money was previously
+// encountered, meaning we have found a match. We return whatever value the key returns and the current
+// index we are at +1 because they are operating on a 1 based index system.
+
+        HashMap<Integer, Integer> hm = new HashMap<>();
+        for(int i = 0; i < cost.length; i++){
+            if(hm.containsKey(cost[i]))
+                System.out.println(hm.get(cost[i]) + " " + (i + 1));
+            else
+                hm.put((money - cost[i]), i+1);
+        }
+
+    }
